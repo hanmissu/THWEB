@@ -1,5 +1,7 @@
 <?php
 include_once "../model/productModel.php";
+$actionDel = isset($_GET['action']) ? $_GET['action'] : ''; 
+$idDel = isset($_GET['id']) ? $_GET['id'] : '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -15,16 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $img = $_POST['imgP'];
     } else {
         $img = $_FILES['img']['name'];
+        $tmp_img=$_FILES['img']['tmp_name'];
     }
-    
-    $product = new productModel($productid, $productName, $ProductPrice, $ProductColor, $ProductSize,  $img, $Description, $categoryID);
+
+    $product = new productModel($productid, $productName, $ProductPrice, $ProductColor, $ProductSize, $img, $Description, $categoryID);
 
     $data = $product->getData($productid);
  
     if ($data == false) {
         try {
             $product->inssertProduct();
-            move_uploaded_file($_FILES['img']['tmp_name'], "../view/img/" . $img);
+            move_uploaded_file($tmp_img, "../view/img/" . $img);
             header("Location: ../view/products.php");
         } catch (\Throwable $th) {
             header("Location: ../view/add-product.php");
@@ -33,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             
             $product->updateData($productid,$productName, $ProductPrice, $ProductColor, $ProductSize,  $img, $Description, $categoryID);
-            move_uploaded_file($_FILES['img']['tmp_name'], "../view/img/" . $img);
+         
+            move_uploaded_file($tmp_img, "../view/img/" . $img);
             $_SESSION["update"] = true;
             header("Location: ../view/products.php");
         } catch (\Throwable $th) {
@@ -41,5 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "fail";
             //header("Location: ../view/editCategory.php");
         }
+    }
+}
+if ($actionDel == 'delete') {
+    try {
+        $productDel = new productModel($idDel, "","","","","","","");
+        $productDel->deleteData($idDel);
+        header("Location: ../view/products.php");
+    } catch (\Throwable $th) {
+        echo '<script>alert("Xóa không thành côngs")</script>';
     }
 }

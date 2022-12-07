@@ -52,16 +52,17 @@ include_once "../model/productModel.php";
               ?>
                 <tbody>
                   <tr>
+                    
                     <th scope="row"><input type="checkbox" /></th>
                     <td class="tm-product-name"><?php echo $data[$i]['tenGiay'] ?></td>
                     <td><?php echo $data[$i]['gia'] ?></td>
                     <td>
                       <img src="./img/<?php echo $data[$i]['anh'] ?>" alt="Lỗi ảnh" style="max-width: 100px; max-height: 100px;" >
-                      
+                     
                       </td>
                    
                       <td class="text-center">
-                        <a href="../Controller/productController.php?action=delete&id=<?php echo $data[$i]['maLoaiGiay'] ?>">
+                        <a href="../Controller/productController.php?action=delete&id=<?php echo $data[$i]['maGiay'] ?>">
                           <i class="far fa-trash-alt"></i>
                         </a>
                       </td>
