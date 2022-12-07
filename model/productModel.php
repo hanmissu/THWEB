@@ -125,12 +125,12 @@ class productModel
         $dbConn->disconnet();
         return $data; 
     }
-    public function getData()
+    public function getData($maGiay)
     {
        
         $dbConn = new MySQLConnet();
         $sql = "select * from giay WHERE maGiay=:maGiay";
-        $data = ['maGiay' => $this->getmaGiay()];
+        $data = ['maGiay' => $maGiay];
         $pro=$dbConn->getData($sql,$data);
         $dbConn->disconnet();
         return $pro;
@@ -147,20 +147,20 @@ class productModel
         $dbConnet->disconnet();
         return $pro;
     }
-    public function updateData()
+    public function updateData($maGiay,$tenGiay,$gia,$mauSac,$size,$anh,$moTa,$maLoaiGiay)
     {
         $data = [
-            'maGiay' => $this->maGiay,
-            'tenGiay' => $this->tenGiay,
-            'gia' => $this->gia,
-            'mauSac' => $this->mauSac,
-            'size' => $this->size,
-            'anh' => $this->anh,
-            'moTa' => $this->moTa,
-            'maLoaiGiay' => $this->maLoaiGiay,
+            'maGiay'=>$maGiay,
+            'tenGiay' => $tenGiay,
+            'gia' => $gia,
+            'mauSac' => $mauSac,
+            'size' => $size,
+            'anh' => $anh,
+            'moTa' => $moTa,
+            'maLoaiGiay' => $maLoaiGiay,
         ];
         $dbConnet = new MySQLConnet();
-        $sql = "UPDATE giay set maGiay=:maGiay,tenGiay=:tenGiay,gia=:gia,mauSac=:mauSac,size=:size,anh=:anh,moTa=:moTa,maLoaiGiay=:maLoaiGiay
+        $sql = "UPDATE giay set tenGiay=:tenGiay,gia=:gia,mauSac=:mauSac,size=:size,anh=:anh,moTa=:moTa,maLoaiGiay=:maLoaiGiay
                  WHERE maGiay=:maGiay";
         $dbConnet->update($sql, $data);
     }

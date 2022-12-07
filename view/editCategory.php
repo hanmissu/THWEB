@@ -49,9 +49,8 @@ include "../model/categoryModel.php";
 
                   <form action="../Controller/CategoryController.php" method="POST" class="tm-edit-product-form">
                     <div class="form-group mb-3">
-                      <label for="name">Category ID
-                      </label>
-                      <input id="CategoryID" name="CategoryID" value="<?php echo $data['maLoaiGiay']; ?>" type="text" class="form-control validate" disabled required />
+
+                      <input id="CategoryID" name="CategoryID" value="<?php echo $data['maLoaiGiay']; ?>" type="hidden" class="form-control validate"  required />
                     </div>
                     <div class="form-group mb-3">
                       <label for="description">Category Name</label>

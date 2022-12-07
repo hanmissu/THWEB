@@ -66,7 +66,7 @@ include_once "../model/productModel.php";
                         </a>
                       </td>
                       <td class="text-center">
-                        <a href="edit-product.php?id=<?php echo $data[$i]['maLoaiGiay'] ?>">
+                        <a href="edit-product.php?id=<?php echo $data[$i]['maGiay'] ?>">
                           <i class="fas fa-edit"></i>
                         </a>
                       </td>

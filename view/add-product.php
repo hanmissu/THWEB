@@ -73,6 +73,8 @@ include_once "../model/categoryModel.php"
                 <div class="form-group mb-3">
                   <label for="category">Category</label>
                   <select class="custom-select tm-select-accounts" id="categoryID" name="categoryID">
+
+                  
                     <?php
                     $category = new categoryModel(0, "");
                     $data = $category->getAllCagetory();

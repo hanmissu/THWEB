@@ -45,7 +45,7 @@
                 <div class="form-group mb-3">
                   <label for="name">Category ID
                   </label>
-                  <input id="CategoryID" name="CategoryID" type="text" class="form-control validate" required />
+                  <input id="CategoryID" name="CategoryID" type="text" class="form-control validate" />
                 </div>
                 <div class="form-group mb-3">
                   <label for="description">Category Name</label>

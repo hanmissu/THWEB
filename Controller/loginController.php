@@ -1,6 +1,6 @@
 <?php
 
-include '../model/userModel.php';
+include_once '../model/userModel.php';
 $a = new userModel($_POST['username'], $_POST['password']);
 $data = $a->getData($_POST['username']);
 session_start();

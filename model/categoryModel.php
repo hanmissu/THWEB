@@ -1,5 +1,5 @@
 <?php
-include '../util/MySQLConnet.php';
+include_once '../util/MySQLConnet.php';
 class categoryModel
 {
     private $maLoaiGiay;

@@ -1,7 +1,7 @@
 <?php
 
 
-include '../util/MySQLConnet.php';
+include_once '../util/MySQLConnet.php';
 class userModel {
     //put your code here
     private $userName;
