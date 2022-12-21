@@ -47,33 +47,38 @@ include_once "../model/productModel.php";
               <?php
               $product = new productModel("", "", "", "", "", "", "", "", "");
               $data = $product->getAllProduct();
-    
+                $idCa= $_GET["idCa"];
+     
               for ($i = 0; $i < count($data); $i++) {
-              ?>
-                <tbody>
-                  <tr>
-                    
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name"><?php echo $data[$i]['tenGiay'] ?></td>
-                    <td><?php echo $data[$i]['gia'] ?></td>
-                    <td>
-                      <img src="../../img/<?php echo $data[$i]['anh'] ?>" alt="Lỗi ảnh" style="max-width: 100px; max-height: 100px;" >
-                     
-                      </td>
-                   
-                      <td class="text-center">
-                        <a href="../Controller/productController.php?action=delete&id=<?php echo $data[$i]['maGiay'] ?>">
-                          <i class="far fa-trash-alt"></i>
-                        </a>
-                      </td>
-                      <td class="text-center">
-                        <a href="edit-product.php?id=<?php echo $data[$i]['maGiay'] ?>">
-                          <i class="fas fa-edit"></i>
-                        </a>
-                      </td>
-                  </tr>
-                </tbody>
-              <?php
+                if($data[$i]["maLoaiGiay"]==$idCa){
+                    ?>
+
+                    <tbody>
+                      <tr>
+                        
+                        <th scope="row"><input type="checkbox" /></th>
+                        <td class="tm-product-name"><?php echo $data[$i]['tenGiay'] ?></td>
+                        <td><?php echo $data[$i]['gia'] ?></td>
+                        <td>
+                          <img src="../../img/<?php echo $data[$i]['anh'] ?>" alt="Lỗi ảnh" style="max-width: 100px; max-height: 100px;" >
+                         
+                          </td>
+                       
+                          <td class="text-center">
+                            <a href="../Controller/productController.php?action=delete&id=<?php echo $data[$i]['maGiay'] ?>">
+                              <i class="far fa-trash-alt"></i>
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <a href="edit-product.php?id=<?php echo $data[$i]['maGiay'] ?>">
+                              <i class="fas fa-edit"></i>
+                            </a>
+                          </td>
+                      </tr>
+                    </tbody>
+                  <?php
+                }
+           
               }
               ?>
 
@@ -92,39 +97,39 @@ include_once "../model/productModel.php";
           <h2 class="tm-block-title">Product Categories</h2>
           <div class="tm-product-table-container">
 
-            <?php
+<?php
 
-            $category = new categoryModel(0, "");
-            $data = $category->getAllCagetory();
-            for ($i = 0; $i < count($data); $i++) {
-            ?>
-              <table class="table tm-table-small tm-product-table">
-                <form action="../Controller/CategoryController.php" method="POST">
-                  <tbody>
-                    <tr>
-                      <td class="product-name">
-                        <a href="./productOfCategory.php?idCa=<?php echo $data[$i]['maLoaiGiay'] ?>"><?php echo $data[$i]["tenLoai"] ?></a>
-                        
-                      </td>
-                      <td class="text-center">
-                        <a href="../Controller/CategoryController.php?action=delete&id=<?php echo $data[$i]['maLoaiGiay'] ?>">
-                          <i class="far fa-trash-alt"></i>
-                        </a>
-                      </td>
-                      <td class="text-center">
-                        <a href="editCategory.php?id=<?php echo $data[$i]['maLoaiGiay'] ?>">
-                          <i class="fas fa-edit"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </form>
-              </table>
+$category = new categoryModel(0, "");
+$data = $category->getAllCagetory();
+for ($i = 0; $i < count($data); $i++) {
+?>
+  <table class="table tm-table-small tm-product-table">
+    <form action="../Controller/CategoryController.php" method="POST">
+      <tbody>
+        <tr>
+          <td class="product-name">
+            <a href="./productOfCategory.php?idCa=<?php echo $data[$i]['maLoaiGiay'] ?>"><?php echo $data[$i]["tenLoai"] ?></a>
+            
+          </td>
+          <td class="text-center">
+            <a href="../Controller/CategoryController.php?action=delete&id=<?php echo $data[$i]['maLoaiGiay'] ?>">
+              <i class="far fa-trash-alt"></i>
+            </a>
+          </td>
+          <td class="text-center">
+            <a href="editCategory.php?id=<?php echo $data[$i]['maLoaiGiay'] ?>">
+              <i class="fas fa-edit"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </form>
+  </table>
 
-            <?php
-            }
-            ?>
-          </div>
+<?php
+}
+?>
+</div>
           <!-- table container -->
           <a href="addCategory.php"><button class="btn btn-primary btn-block text-uppercase mb-3">
               Add new category

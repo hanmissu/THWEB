@@ -10,6 +10,7 @@ class productModel
     private $anh;
     private $moTa;
     private $maLoaiGiay;
+   
     public function getmoTa()
     {
         return $this->moTa;
@@ -95,11 +96,12 @@ class productModel
         $this->anh = $anh;
         $this->moTa = $moTa;
         $this->maLoaiGiay=$maLoaiGiay;
+  
     }
     public function  inssertProduct()
     {
         $data = [
-            
+          
             'tenGiay' => $this->tenGiay,
             'gia' => $this->gia,
             'mauSac' => $this->mauSac,
@@ -107,6 +109,7 @@ class productModel
             'anh' => $this->anh,
             'moTa' => $this->moTa,
             'maLoaiGiay' => $this->maLoaiGiay,
+            
         ];
         $dbConnet = new MySQLConnet();
         $pdo = $dbConnet->connet();
@@ -116,7 +119,7 @@ class productModel
         $stmt->execute($data);
     }
     
-    public function getAllCagetory()
+    public function getAllProduct()
     {
         $data = null;
         $dbConn = new MySQLConnet();
@@ -147,20 +150,22 @@ class productModel
         $dbConnet->disconnet();
         return $pro;
     }
-    public function updateData($maGiay,$tenGiay,$gia,$mauSac,$size,$anh,$moTa,$maLoaiGiay)
+    public function updateData()
     {
         $data = [
-            'maGiay'=>$maGiay,
-            'tenGiay' => $tenGiay,
-            'gia' => $gia,
-            'mauSac' => $mauSac,
-            'size' => $size,
-            'anh' => $anh,
-            'moTa' => $moTa,
-            'maLoaiGiay' => $maLoaiGiay,
+            'maGiay'=>$this->maGiay,
+            'tenGiay' => $this->tenGiay,
+            'gia' => $this->gia,
+            'mauSac' => $this->mauSac,
+            'size' => $this->size,
+            'anh' => $this->anh,
+            'moTa' => $this->moTa,
+            'maLoaiGiay' => $this->maLoaiGiay,
+            
         ];
         $dbConnet = new MySQLConnet();
-        $sql = "UPDATE giay set tenGiay=:tenGiay,gia=:gia,mauSac=:mauSac,size=:size,anh=:anh,moTa=:moTa,maLoaiGiay=:maLoaiGiay
+        
+        $sql = "UPDATE giay set tenGiay=:tenGiay,gia=:gia,mauSac=:mauSac,anh=:anh,size=:size,moTa=:moTa,maLoaiGiay=:maLoaiGiay
                  WHERE maGiay=:maGiay";
         $dbConnet->update($sql, $data);
     }

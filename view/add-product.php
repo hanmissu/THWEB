@@ -63,7 +63,7 @@ include_once "../model/categoryModel.php"
                   </label>
                   <input id="name" name="ProductSize" type="text" class="form-control validate" required />
                 </div>
-
+             
                 <div class="form-group mb-3">
                   <label for="description">Description</label>
                   <textarea id="Description" name="Description" class="form-control validate" rows="3" required></textarea>

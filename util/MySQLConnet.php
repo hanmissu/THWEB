@@ -80,5 +80,6 @@ class MySQLConnet
         $stmt = $pdo->prepare($sql);
         $stmt->execute($data);
         return $stmt->rowCount();
+        $dbCon->disconnet();
     }
 }

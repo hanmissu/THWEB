@@ -41,7 +41,7 @@ include_once "../model/categoryModel.php";
             <div class="col-xl-6 col-lg-6 col-md-12">
               <?php
               $product_id = $_GET['id'];
-              $product = new productModel($product_id, "", "", "", "", "", "", "");
+              $product = new productModel($product_id, "", "", "", "", "", "", "","");
               $data = $product->getData($product_id);
 
               ?>
@@ -67,7 +67,7 @@ include_once "../model/categoryModel.php";
                   </label>
                   <input id="name" name="ProductColor" value="<?php echo $data["mauSac"] ?>" type="text" class="form-control validate" required />
                 </div>
-
+     
                 <div class="form-group mb-3">
                   <label for="name">Size
                   </label>
